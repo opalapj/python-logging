@@ -1,0 +1,25 @@
+version = 1
+disable_existing_loggers = false
+
+[root]
+handlers = ["console"]
+
+#[loggers]
+#handlers = ["console"]
+
+#[loggers]
+#firstpackage = {}
+#__main__ = {}
+
+#[handlers.file]
+#class = "logging.FileHandler"
+#formatter = "rich"
+#filename = "logs.log"
+
+[handlers.console]
+class = "logging.StreamHandler"
+#level = "ERROR"
+#formatter = "rich"
+
+[formatters.rich]
+format = "%(levelname)-8s | %(asctime)s | %(name)s | %(funcName)s | %(message)s"
