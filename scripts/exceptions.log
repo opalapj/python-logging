@@ -1,0 +1,24 @@
+ERROR    | 2025-11-20 12:35:33,362 | exclog | log_exception | Uncaught exception:
+Traceback (most recent call last):
+  File "D:\Dane\opalapi\data\programming\github\python-logging\scripts\main.py", line 128, in <module>
+    main()
+    ~~~~^^
+  File "D:\Dane\opalapi\data\programming\github\python-logging\scripts\main.py", line 124, in main
+    result = 1 / 0
+             ~~^~~
+ZeroDivisionError: division by zero
+Stack (most recent call last):
+  File "D:\Dane\opalapi\data\programming\github\python-logging\scripts\exclog\__init__.py", line 10, in log_exception
+    logger.error("Uncaught exception:", exc_info=exc_info, stack_info=True)
+ERROR    | 2025-11-20 12:35:55,675 | exclog | log_exception | Uncaught exception:
+Traceback (most recent call last):
+  File "D:\Dane\opalapi\data\programming\github\python-logging\scripts\main.py", line 128, in <module>
+    main()
+    ~~~~^^
+  File "D:\Dane\opalapi\data\programming\github\python-logging\scripts\main.py", line 124, in main
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
+Stack (most recent call last):
+  File "D:\Dane\opalapi\data\programming\github\python-logging\scripts\exclog\__init__.py", line 10, in log_exception
+    logger.error("Uncaught exception:", exc_info=exc_info, stack_info=True)

@@ -3,6 +3,7 @@ import logging.config
 import pathlib
 import tomllib
 
+import exclog
 import yaml
 
 import firstpackage
@@ -14,6 +15,7 @@ import thirdpackage.module
 
 
 logger = logging.getLogger(__name__)
+exclog.enable()
 
 
 def do_basic_config():
@@ -27,13 +29,13 @@ def do_specific_package_config_using_toml():
     return content
 
 
-# def do_dict_config_using_toml():
-#     with pathlib.Path("data/config.toml").open("rb") as file:
-#         content = tomllib.load(file)
-#     logging.config.dictConfig(config=content)
-#     return content
-#
-#
+def do_dict_config_using_toml():
+    with pathlib.Path("data/config.toml").open("rb") as file:
+        content = tomllib.load(file)
+    logging.config.dictConfig(config=content)
+    return content
+
+
 def do_basic_config_using_toml():
     with pathlib.Path("data/basic_config.toml").open("rb") as file:
         content = tomllib.load(file)
@@ -55,13 +57,13 @@ def do_specific_package_config_using_yaml():
     return content
 
 
-# def do_dict_config_using_yaml():
-#     with pathlib.Path("data/config.yaml").open("rb") as file:
-#         content = yaml.safe_load(file)
-#     logging.config.dictConfig(config=content)
-#     return content
-#
-#
+def do_dict_config_using_yaml():
+    with pathlib.Path("data/config.yaml").open("rb") as file:
+        content = yaml.safe_load(file)
+    logging.config.dictConfig(config=content)
+    return content
+
+
 def do_basic_config_using_yaml():
     with pathlib.Path("data/basic_config.yaml").open("rb") as file:
         content = yaml.safe_load(file)
@@ -101,14 +103,14 @@ def main():
     # assert config_toml == config_yaml, "Different dicts!"
 
     # Custom config using config dicts. Show logs from specific package only.
-    config_toml = do_specific_package_config_using_toml()
-    config_yaml = do_specific_package_config_using_yaml()
-    assert config_toml == config_yaml, "Different dicts!"
+    # config_toml = do_specific_package_config_using_toml()
+    # config_yaml = do_specific_package_config_using_yaml()
+    # assert config_toml == config_yaml, "Different dicts!"
 
     # Custom complete config using config dicts.
-    # config_toml = do_dict_config_using_toml()
-    # config_yaml = do_dict_config_using_yaml()
-    # assert config_toml == config_yaml, "Different dicts!"
+    config_toml = do_dict_config_using_toml()
+    config_yaml = do_dict_config_using_yaml()
+    assert config_toml == config_yaml, "Different dicts!"
 
     # Tests.
     function()
@@ -118,6 +120,8 @@ def main():
     secondpackage.module.function()
     thirdpackage.function()
     thirdpackage.module.function()
+
+    1 / 0
 
 
 if __name__ == "__main__":
