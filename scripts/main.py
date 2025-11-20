@@ -24,8 +24,22 @@ def do_dict_config_using_toml():
     return content
 
 
+def do_basic_config_using_toml():
+    with pathlib.Path("data/basic_config.toml").open("rb") as file:
+        content = tomllib.load(file)
+    logging.config.dictConfig(config=content)
+    return content
+
+
 def do_dict_config_using_yaml():
     with pathlib.Path("data/config.yaml").open("rb") as file:
+        content = yaml.safe_load(file)
+    logging.config.dictConfig(config=content)
+    return content
+
+
+def do_basic_config_using_yaml():
+    with pathlib.Path("data/basic_config.yaml").open("rb") as file:
         content = yaml.safe_load(file)
     logging.config.dictConfig(config=content)
     return content
@@ -42,10 +56,20 @@ def function():
 
 
 def main():
+    # Built-in basicConfig.
     # do_basic_config()
-    config_toml = do_dict_config_using_toml()
-    config_yaml = do_dict_config_using_yaml()
+
+    # Basic config using config dicts.
+    config_toml = do_basic_config_using_toml()
+    config_yaml = do_basic_config_using_yaml()
     assert config_toml == config_yaml, "Different dicts!"
+
+    # Custom config using config dicts.
+    # config_toml = do_dict_config_using_toml()
+    # config_yaml = do_dict_config_using_yaml()
+    # assert config_toml == config_yaml, "Different dicts!"
+
+    # Tests.
     function()
     firstpackage.function()
     firstpackage.module.function()
