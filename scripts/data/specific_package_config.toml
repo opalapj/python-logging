@@ -6,11 +6,6 @@ handlers = ["console"]
 
 [loggers.firstpackage]
 
-#[handlers.file]
-#class = "logging.FileHandler"
-#formatter = "rich"
-#filename = "logs.log"
-
 [handlers.console]
 class = "logging.StreamHandler"
 formatter = "rich"

@@ -15,8 +15,9 @@ repos:
       args: [
         "--force-single-line-imports",
         "--lines-after-imports=2",
-        "--project=my-package",
-        "--known-local-folder=setup",
+        "--known-local-folder=firstpackage",
+        "--known-local-folder=secondpackage",
+        "--known-local-folder=thirdpackage",
       ]
     - id: flake8
       name: flake8
